@@ -15,7 +15,9 @@ Line 593 is in abseil 20250814.0's `AbslInternalSleepFor`:
 absl::Duration to_sleep = std::min(duration, absl::MaxSleep());
 ```
 
-This project builds a DLL that calls `absl::SleepFor`, using abseil 20250814.0 and the same compiler and linker flags.
+This project builds a DLL that calls `absl::SleepFor`, using abseil 20250814.0 and the same compiler and linker flags, and reproduces the error with MSVC 14.52 in a MinSizeRel (`/O1`) build.
+
+Reported as https://developercommunity.visualstudio.com/t/x86-LTCG-internal-compiler-error-C1001/11181693
 
 ## Steps
 
@@ -30,5 +32,6 @@ This project builds a DLL that calls `absl::SleepFor`, using abseil 20250814.0 a
 
 ## Controls
 
-- Without LTCG: configure with `-DREPRO_LTO=OFF` in a fresh build directory.
+- Without LTCG: configure with `-DREPRO_LTO=OFF` in a fresh build directory. This builds.
+- At `/O2`: configure with `-DCMAKE_BUILD_TYPE=Release` in a fresh build directory. This builds.
 - With MSVC 14.51: run `vcvarsall.bat x64_x86 -vcvars_ver=14.51` and build in a fresh build directory.
