@@ -19,7 +19,7 @@ This project builds a DLL that calls `absl::SleepFor`, using abseil 20250814.0 a
 
 ## Steps
 
-1. Install Visual Studio 2026 18.12 (or its Build Tools) with the "Desktop development with C++" workload.
+1. Install Visual Studio 2026 18.12 (or its Build Tools) with the "Desktop development with C++" workload and its "C++ CMake tools for Windows" component, or put CMake 3.24+ and Ninja on PATH some other way.
 2. Open "x64_x86 Cross Tools Command Prompt for VS 2026". `cl` should report version 19.52.
 3. Build:
 
